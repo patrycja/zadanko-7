@@ -16,7 +16,7 @@ validates_presence_of :name, :description
   end
   
   def members
-    return memberships.map {|t| t.user.email}
+    return memberships.map {|t| t.user}
   end
   
   def member?(user)
