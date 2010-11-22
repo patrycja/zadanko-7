@@ -3,8 +3,11 @@
 
 <h1>Grupy, do ktorych nalezysz:</h1>
 
-<% @user.groups.each do |m| %>
-  <h2><li><%= m.name %></li></h2>
+<% @user.memberships.each do |m| %>
+  <h2><li><%= m.group.name %></li></h2>
+  (<%= link_to "Wypisz", {:action => "destroy", :id => m.id, :controller => "memberships"},
+   :confirm => "Na pewno chcesz sie wypisac z tej grupy?", :method => :delete %>)
 <% end %>
 
+<br><br><br>
 <%= link_to "Powrot", groups_path %>
