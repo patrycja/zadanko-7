@@ -1,0 +1,10 @@
+<h1>Profil uzytkownika: </h1>
+<h2><%= current_user.email %></h2>
+
+<h1>Grupy, do ktorych nalezysz:</h1>
+
+<% @user.groups.each do |m| %>
+  <h2><li><%= m.name %></li></h2>
+<% end %>
+
+<%= link_to "Powrot", groups_path %>

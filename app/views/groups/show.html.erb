@@ -1,0 +1,19 @@
+<center><h1><%= @group.name %></h1>
+<h2><%= @group.description %></h2></center>
+<br><br>
+
+<%= link_to "Czlonkowie grupy",  group_memberships_path(@group) %>
+<br>
+<br>
+<% unless @group.member?(current_user) %>
+	<%= link_to "Dolacz do tej grupy!", group_memberships_path(@group.id),
+        :confirm => "Czy na pewno chcesz dolaczyc?", :method => :post %>
+<% end %>
+<br>
+<br>
+<% if @group.admin?(current_user) %>
+   <%= link_to "Edytuj grupe", {:action => "edit", :id => @group.id} %><br>
+   <%= link_to "Usun grupe", {:action => "destroy", :id => @group.id},
+       :confirm => "Czy na pewno chcesz usunac te grupe?", :method => :delete %><br>
+<% end %>
+<%= link_to "Powrot", groups_path %>

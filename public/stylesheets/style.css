@@ -1,0 +1,37 @@
+body {
+  background: url(bg.jpg) fixed;
+  padding: 20px;
+  margin: 0px;
+
+}
+
+#container{
+	height:570px;
+	width:830px;
+	background: #efe9df;
+	border: 1px solid #ffcaca;
+	margin-top:25px;
+	margin-left: 165px;
+	padding: 5px 10px;
+}
+
+h1{
+	font-family: Verdana;
+	font-size: 20px;
+	color: #A10048;
+	margin: 5px 0px;
+}
+
+h2{
+	font-family: Verdana;
+	font-size: 15px;
+	color: #E60066;
+	margin:3px 15px;
+}
+
+#container p {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #000000;
+	margin: 3px 10px;
+}

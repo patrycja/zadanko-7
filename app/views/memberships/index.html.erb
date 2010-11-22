@@ -1,0 +1,9 @@
+<h1>Do tej grupy naleza:</h1>
+
+<% @group.members.each do |m| %>
+  <h2><li><%= m %><br></li></h2>
+<% end %>
+
+
+
+<%= link_to "Powrot", {:action => 'show', :id => @group.id, :controller => 'groups'} %>

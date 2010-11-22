@@ -1,0 +1,2 @@
+class MembershipInvitationsController < ApplicationController
+end
