@@ -22,8 +22,9 @@ Jestes zalogowany jako:
   <% end %>
   
   <br>
-  <p><h2><%= link_to "Wyloguj sie", destroy_user_session_path %></h2></p>
-  <p><%= link_to "Stworz nowa grupe", {:action => 'new' }%></p>
+  <p><h2><%= link_to "Stworz nowa grupe", {:action => 'new' }%></h2></p>
+  <br>
+  <p><%= link_to "Wyloguj sie", destroy_user_session_path %></p>
 <% else %>
   
   <center><h1><br>Musisz byc zalogowany, by moc ogladac zawartosc tej strony.</h1><br><br>
