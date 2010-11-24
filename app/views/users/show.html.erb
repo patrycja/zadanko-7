@@ -5,8 +5,12 @@
   <h1>Grupy, do ktorych nalezysz:</h1>
   <% @user.memberships.each do |m| %>
     <h2><li><%= m.group.name %></li></h2>
-    (<%= link_to "Wypisz", {:action => "destroy", :id => m.id, :controller => "memberships"},
-     :confirm => "Na pewno chcesz sie wypisac z tej grupy?", :method => :delete %>)
+    <% unless m.group.admin?(@user) %>
+	  (<%= link_to "Wypisz", {:action => "destroy", :id => m.id, :controller => "memberships"},
+      :confirm => "Na pewno chcesz sie wypisac z tej grupy?", :method => :delete %>)
+	<% else %>
+	  (Jestes adminem tej grupy)
+    <% end %>
   <% end %>
 <% else %>
 <h1>Nie dolaczyles jeszcze do zadnej grupy :C</h1>
