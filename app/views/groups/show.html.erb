@@ -3,8 +3,8 @@
 <br><br>
 
 <%= link_to "Czlonkowie grupy",  group_memberships_path(@group) %>
-<br>
-<br>
+<br><br>
+
 <% unless @group.member?(current_user) %>
     <h2>Nie jestes czlonkiem tej grupy.</h2>
 	<% unless @group.requested?(current_user) %>
@@ -16,8 +16,9 @@
 <% else %>
 	<h2>Jestes zapisany do tej grupy.</h2>
 <% end %>
-<br>
-<br>
+<br><br>
+
+
 <% if @group.admin?(current_user) %>
    <%= link_to "Edytuj grupe", {:action => "edit", :id => @group.id} %><br>
    <%= link_to "Usun grupe", {:action => "destroy", :id => @group.id},
@@ -35,4 +36,6 @@
 		<% end %>
 	<% end %>	
 <% end %>
+
+<br>
 <%= link_to "Powrot", groups_path %>

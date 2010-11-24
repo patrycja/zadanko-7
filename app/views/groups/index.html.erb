@@ -2,11 +2,12 @@
 Jestes zalogowany jako:
 <b><%= current_user.email %></b>
 <%= link_to "Moj profil", {:action => "show", :id => current_user.id, :controller => "users"} %>
+
 <br><br>
 <%= render 'form2' %>
 
   <% if @groups.blank? %>
-    <p><h1>Nie mamy zadnych zapisanych grup, sorry.</h1></p>
+    <p><h1>Nie mamy zadnych zapisanych grup. Mozesz stworzyc pierwsza!</h1></p>
 
   <% else %>
     <p><h1>Dolacz do jednej z naszych wspanialych grup!</h1></p>
