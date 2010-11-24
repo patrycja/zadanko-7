@@ -3,5 +3,7 @@
 <% @users.each do |u| %>
  <h2><li><%= u.email -%></li></h2>
 <% end %>
+<%= will_paginate ({:previous_label => "&#8592; Poprzednia", :next_label => "Nastepna &#8594;"}) %>
+<br>
 
 <%= link_to "Powrot", groups_path %>
