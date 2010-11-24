@@ -1,12 +1,23 @@
 <h1>Profil uzytkownika: </h1>
 <h2><%= current_user.email %></h2>
 
-<h1>Grupy, do ktorych nalezysz:</h1>
+<% unless @user.memberships.blank? %>
+  <h1>Grupy, do ktorych nalezysz:</h1>
+  <% @user.memberships.each do |m| %>
+    <h2><li><%= m.group.name %></li></h2>
+    (<%= link_to "Wypisz", {:action => "destroy", :id => m.id, :controller => "memberships"},
+     :confirm => "Na pewno chcesz sie wypisac z tej grupy?", :method => :delete %>)
+  <% end %>
+<% else %>
+<h1>Nie dolaczyles jeszcze do zadnej grupy :C</h1>
+<% end %>
+<br><br>
 
-<% @user.memberships.each do |m| %>
-  <h2><li><%= m.group.name %></li></h2>
-  (<%= link_to "Wypisz", {:action => "destroy", :id => m.id, :controller => "memberships"},
-   :confirm => "Na pewno chcesz sie wypisac z tej grupy?", :method => :delete %>)
+<% unless @user.membership_requests.blank? %>
+  <h1>Grupy, do ktorych chcesz dolaczyc:</h1>
+  <% @user.membership_requests.each do |r| %>
+    <h2><li><%= r.group.name %></li></h2>  
+  <% end %>
 <% end %>
 
 <br><br><br>

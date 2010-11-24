@@ -2,12 +2,13 @@ Grupy::Application.routes.draw do
   devise_for :users
   
   resources :groups do
-	resources :memberships
+	resources :memberships, :membership_requests
   end
   resources :users do
     resources :memberships
   end
   resources :memberships
+  resources :memberships_requests
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

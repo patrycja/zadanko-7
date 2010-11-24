@@ -6,8 +6,15 @@
 <br>
 <br>
 <% unless @group.member?(current_user) %>
-	<%= link_to "Dolacz do tej grupy!", group_memberships_path(@group.id),
-        :confirm => "Czy na pewno chcesz dolaczyc?", :method => :post %>
+    <h2>Nie jestes czlonkiem tej grupy.</h2>
+	<% unless @group.requested?(current_user) %>
+	  <%= link_to "Dolacz do tej grupy!", group_membership_requests_path(@group.id),
+          :confirm => "Wysylasz do admina prosbe o dodanie do grupy", :method => :post %>
+	<% else %>
+	  <h3>Wyslano prosbe o dolaczenie do grupy.</h3>
+	<% end %>
+<% else %>
+	<h2>Jestes zapisany do tej grupy.</h2>
 <% end %>
 <br>
 <br>
@@ -15,5 +22,17 @@
    <%= link_to "Edytuj grupe", {:action => "edit", :id => @group.id} %><br>
    <%= link_to "Usun grupe", {:action => "destroy", :id => @group.id},
        :confirm => "Czy na pewno chcesz usunac te grupe?", :method => :delete %><br>
+   <% if @group.membership_requests.blank? %>
+      <h2>Nie ma zadnych prosb o dodanie do grupy :C</h2>
+   <% else %>
+      <h2>Prosby o dodanie do grupy:</h2>
+	  <% @group.membership_requests.each do |r| %>
+	   <h3>Uzytkownik <%= r.user.email %> chce dolaczyc do grupy</h3>
+	   <%= link_to "Zaakceptuj", {:action => "create", :user_id => r.user_id, 
+	       :group_id => @group.id, :controller => "memberships"}, :method => :post %>
+	   <%= link_to "Usun request", {:action => "destroy", :group_id => @group.id,
+	       :id => r, :controller => "membership_requests"}, :method => :delete %>
+		<% end %>
+	<% end %>	
 <% end %>
 <%= link_to "Powrot", groups_path %>
