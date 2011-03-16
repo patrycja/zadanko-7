@@ -5,11 +5,38 @@
   <%= stylesheet_link_tag "style" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  
+  <script type="text/javascript">
+
+  (function() {
+    var lc_params = '';
+    var lc_lang = 'en';
+    var lc_skill = '0';
+
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    var lc_src = ('https:' == document.location.protocol ? 'https://' : 'http://');
+        lc_src += 'chat.livechatinc.net/licence/1046444/script.cgi?lang='+lc_lang+unescape('%26')+'groups='+lc_skill;
+        lc_src += ((lc_params == '') ? '' : unescape('%26')+'params='+encodeURIComponent(encodeURIComponent(lc_params))); lc.src = lc_src;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+
+  </script>
 </head>
 <body>
 
 <div id='container'>
 		<%= yield %>
+		
+	<div id="LiveChat_1300279959"><a href="http://www.livechatinc.com/?partner=lc_1046444">livechat software</a><span> for business</span></div>
+
+	<script type="text/javascript">
+	var __lc_buttons = __lc_buttons || [];
+	__lc_buttons.push({
+		elementId: 'LiveChat_1300279959',
+		language: 'en',
+		skill: '0'
+	});
+</script>
 	</div><!--container-->
 
 </body>
